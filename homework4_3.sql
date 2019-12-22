@@ -1,0 +1,1 @@
+SELECT SUM(duration) * 60 FROM Courses WHERE type = "PROGRAMMING";
