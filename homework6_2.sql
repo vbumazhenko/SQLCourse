@@ -1,12 +1,12 @@
 SELECT
-	Teachers.name AS nameTeacher,
-	AVG(COALESCE(Students.age, 0)) AS avgAgeStudents
+	t.name AS nameTeacher,
+	AVG(COALESCE(s.age, 0)) AS avgAgeStudents
 FROM
-	Teachers AS Teachers
-		LEFT JOIN Courses AS Courses
-			LEFT JOIN Subscriptions AS Subscriptions
-				LEFT JOIN Students AS Students
-				ON Subscriptions.student_id = Students.id
-			ON Courses.id = Subscriptions.course_id
-		ON Courses.teacher_id = Teachers.id
+	Teachers t
+		LEFT JOIN Courses c
+			LEFT JOIN Subscriptions sub
+				LEFT JOIN Students s
+				ON sub.student_id = s.id
+			ON c.id = sub.course_id
+		ON c.teacher_id = t.id
 GROUP BY nameTeacher;

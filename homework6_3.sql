@@ -1,8 +1,8 @@
 SELECT
-	Courses.type AS type,
-	AVG(Teachers.salary) AS avgSalary
+	c.type AS type,
+	AVG(t.salary) AS avgSalary
 FROM
-	Courses AS Courses
-		LEFT JOIN Teachers AS Teachers
-		ON Courses.teacher_id = Teachers.id
+	Courses c
+		LEFT JOIN Teachers t
+		ON c.teacher_id = t.id
 GROUP BY type;

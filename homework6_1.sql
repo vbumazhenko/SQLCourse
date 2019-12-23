@@ -1,11 +1,11 @@
 SELECT
-	Students.name AS studentName,
-	SUM(Courses.duration) AS sumDuration
+	s.name AS studentName,
+	SUM(c.duration) AS sumDuration
 FROM 
-	Students AS Students
-		LEFT JOIN Subscriptions AS Subscriptions
-			LEFT JOIN Courses AS Courses
-			ON Subscriptions.course_id = Courses.id
-		ON Students.id = Subscriptions.student_id
+	Students s
+		LEFT JOIN Subscriptions sub
+			LEFT JOIN Courses c
+			ON sub.course_id = c.id
+		ON s.id = sub.student_id
 GROUP BY
 	studentName;
